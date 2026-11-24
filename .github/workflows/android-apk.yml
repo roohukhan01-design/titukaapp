@@ -86,7 +86,9 @@ jobs:
           node shared/test/motion.test.js
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
 
       - name: Install Android SDK packages
         run: sdkmanager --install "platforms;android-34" "build-tools;34.0.0"
