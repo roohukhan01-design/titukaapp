@@ -28,6 +28,14 @@ android {
         resources { excludes += ['/META-INF/{AL2.0,LGPL2.1}', '/META-INF/DEPENDENCIES'] }
     }
 }
+
+// Kotlin 1.8+ bundles the JDK7/JDK8 extension classes in kotlin-stdlib.
+// Older transitive split artifacts otherwise duplicate those same classes.
+configurations.configureEach {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+}
+
 dependencies {
     implementation 'androidx.activity:activity:1.9.0'
     implementation 'androidx.webkit:webkit:1.11.0'
